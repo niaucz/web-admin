@@ -1,0 +1,38 @@
+server:
+  port: 8088
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/web?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    hikari:
+      minimum-idle: 3
+      maximum-pool-size: 20
+      max-lifetime: 30000
+      connection-test-query: SELECT 1
+  application:
+    name: web-admin
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: AUTO
+    #      logic-delete-value: -1
+    #      logic-not-delete-value: 0
+    banner: false
+logging:
+  level:
+    com:
+      zaxxer:
+        hikari: info
+      ksd:
+        pm: debug
+
+web:
+  #jwt认证的
+  jwt:
+    # 加密秘钥  base64Encoded
+    secret: f4e2e530343a8f86c67cde581c0f9
+    # token有效时长，7天，单位秒
+    expire: 604800
+    header: token
